@@ -1,5 +1,6 @@
 #include <stdio.h>
 char arr[10]={'o','1','2','3','4','5','6','7','8','9'};
+//global variable to store the positions for the game 
 int c=0;
 int check_win();
 int prinf();
@@ -7,20 +8,22 @@ int game();
 int winner(char a);
 int main()
 {
+    //this function is simply used as a starting function
     printf("This is a simple game of tic-tac-toe:-\n");
     game();
 }
 int game()
 {
+    /*This is the function where the base of the game is and all the execution is controlled from here*/
     int pos;
     printf("Enter the name of the first player\n");
     char p1[30],p2[30];
     scanf("%s",&p1);
     printf("Enter the name of the second player\n");
     scanf("%s",&p2);
-    while(check_win()==0)
+    while(check_win()==0)/*continues execution till the game is not won */
     {
-        if(c%2==0)
+        if(c%2==0)/*For the player 1 execution turn */
         {
             printf("%s's turn\n",p1);
             prinf();
@@ -30,7 +33,7 @@ int game()
             printf("\n");
             arr[pos]='O';
         }
-        else
+        else/*For the player 2 execution turn*/
         {
             printf("%s's turn\n",p2);
             prinf();
@@ -42,7 +45,7 @@ int game()
         }
         c++;
     }
-    if(check_win()==1)
+    if(check_win()==1)/*Won by player 1*/
     {
         printf("\n");        
         printf("\n");
@@ -53,7 +56,7 @@ int game()
         printf("\n");
         printf("\n");
     }
-    if(check_win()==2)
+    if(check_win()==2)/*Won by player 2*/
     {
         printf("\n");        
         printf("\n");
@@ -65,7 +68,7 @@ int game()
         printf("\n");
     }
 }
-int prinf()
+int prinf()/*To print the updated table in every turn*/
 {
     printf("       |       |\n");
     printf("   %c   |   %c   |   %c\n",arr[1],arr[2],arr[3]);
@@ -78,7 +81,7 @@ int prinf()
     printf("       |       |\n");
     return 0;
 }
-int check_win()
+int check_win()/*To check if the game has already been won by someone checked after every turn*/
 {
     if(arr[1]==arr[2]&&arr[2]==arr[3])
     {
@@ -117,7 +120,7 @@ int check_win()
         return 0;
     }
 }
-int winner(char a)
+int winner(char a)/*To check who has won the game */
 {
     if(a=='O')
     {
